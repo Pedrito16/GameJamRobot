@@ -154,7 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bateriaprefab: {fileID: 9215588869474215711, guid: 570d3517ec21264449bc33536902b8fc, type: 3}
   bateriaqt: 1
-  spawn: {fileID: 16140833}
+  spawn: {fileID: 2099341367}
+  force: 0
 --- !u!4 &16140835
 Transform:
   m_ObjectHideFlags: 0
