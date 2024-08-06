@@ -11,7 +11,8 @@ public class Player : MonoBehaviour
     private float direction;
     public bool currentplayer = true;
     public bool playerBateria = true;
-
+    public GameObject bateria;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,9 @@ public class Player : MonoBehaviour
         {
             playerRB2 = GetComponent<Rigidbody2D>();
         }
+        
     }
+
 
     // Update is called once per frame
     void Update()
@@ -35,9 +38,19 @@ public class Player : MonoBehaviour
         else if (currentplayer == false) { playertwo(); }
 
         changePlayer();
-       
-    }
+        float timer = Time.deltaTime;
+       if(timer > 1)
+        {
 
+        }
+    }
+    
+    
+        
+
+        /*bateriaClone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        bateriaClone.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,0));*/
+    
     void playerone()
     {
         if(CompareTag("Player") && playerBateria == true)
@@ -46,7 +59,7 @@ public class Player : MonoBehaviour
             playerRB.velocity = new Vector2(speed * direction, 0);
         }
     }
-
+    
     void playertwo()
     {
         if(CompareTag("Player2") && playerBateria == true)
@@ -58,7 +71,13 @@ public class Player : MonoBehaviour
 
     public void changePlayer()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        /*float timer =+ Time.deltaTime;
+        if (timer > 1)
+        {
+            bateriaClone
+            timer = 0;
+        }*/
+        if (Input.GetKeyDown(KeyCode.F))
         {
             playerBateria = false;
             if (currentplayer)
@@ -66,7 +85,14 @@ public class Player : MonoBehaviour
                 currentplayer = false;
             }
             else { currentplayer = true; }
+
+            
+            GameObject bateriaClone = Instantiate(bateria, transform.position, transform.rotation);
+            
+
         }
+
     }
+    
 
 }
