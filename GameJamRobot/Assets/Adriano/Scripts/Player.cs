@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public float speed;
     private float direction;
     public bool currentplayer = true;
-    public static bool playerBateria = true;
+    public bool playerBateria = true;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void changePlayer()
+    public void changePlayer()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
