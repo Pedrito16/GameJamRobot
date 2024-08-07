@@ -16,6 +16,10 @@ public class PlayerTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        movement();
+    }
+    public void movement()
+    {
         direction = Input.GetAxisRaw("Horizontal");
         playerRB.velocity = new Vector2(speed * direction, 0);
     }

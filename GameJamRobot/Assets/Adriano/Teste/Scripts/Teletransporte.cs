@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Elevador : MonoBehaviour
+public class Teletransporte : MonoBehaviour
 {
-    public GameObject playerElevator;
+    public Transform player;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +16,12 @@ public class Elevador : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Chave.chave == true)
+        if(Chave.chave == true)
         {
-            playerElevator.transform.forward = new Vector2(playerElevator.transform.position.x, playerElevator.transform.position.y - 10);
+            player.position = new Vector2(player.position.x -99, player.position.y);
         }
     }
 }
