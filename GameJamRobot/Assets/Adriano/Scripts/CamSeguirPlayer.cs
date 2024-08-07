@@ -55,12 +55,13 @@ public class CamSeguirPlayer : MonoBehaviour
         
         if(player3.hasBattery == true)
         {
-            pointCam1.SetActive(false); //robo1
+            pointCam1.SetActive(true); //robo1
             pointCam2.SetActive(false); //robo2
             pointCam3.SetActive(true); //humano
             Vector3 posicaoPlayer = player3Transform.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, posicaoPlayer, speed);
-            pointCam3.transform.position = smoothedPosition;
+            Vector3 targetPosition = new Vector3(posicaoPlayer.x, posicaoPlayer.y, pointCam3.transform.position.z);
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, speed);
+            
         }
             
 

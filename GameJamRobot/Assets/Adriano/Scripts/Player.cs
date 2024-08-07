@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     
     public float speed;
     private float horizontal;
-    public int direction;
+    public int direction = -1;
     public GameObject bateria;
     public bool hasBattery;
     public float speedBattery = 5;
@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     Collider2D footCollision;
     public Transform foot;
     public float jumpStrength = 3;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,13 +34,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("Desligar", hasBattery);
         footCollision = Physics2D.OverlapCircle(foot.position, 0.05f);
         GroundCheck = footCollision;
-        if(Input.GetButtonDown("Vertical")&& GroundCheck)
-        {
-            playerRB.AddForce(new Vector2(0, jumpStrength * 100));
-
-        }
+        
         if(horizontal != 0)
         {
             direction = (int)horizontal;
@@ -47,24 +45,36 @@ public class Player : MonoBehaviour
         if (CompareTag("Player") && hasBattery == true)
         {
             horizontal = Input.GetAxisRaw("Horizontal");
+            animator.SetFloat("Speed", horizontal);
             playerRB.velocity = new Vector2(speed * horizontal, playerRB.velocity.y);
             
         }
-        if (Input.GetKeyDown(KeyCode.RightControl) && hasBattery == true)
+        
+        if(Input.GetButtonDown("Vertical") && GroundCheck && hasBattery == true)
+        {
+            playerRB.AddForce(new Vector2(0, jumpStrength * 100));
+
+        }
+        if(Input.GetKeyDown(KeyCode.RightControl) && hasBattery == true)
         {
             if (direction == -1)
             { //trocar rotação quando exportar sprite
                 GameObject bateriaClone = Instantiate(bateria, Esquerda.position, transform.rotation);
                 bateriaClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speedBattery * direction, 0);
+                
             } else if(direction == 1)
             {
                 GameObject bateriaClone = Instantiate(bateria, Direita.position, transform.rotation);
                 bateriaClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speedBattery * direction, 0);
             }
             hasBattery = false;
+            
         }
     }
-
+    
+    
+        
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

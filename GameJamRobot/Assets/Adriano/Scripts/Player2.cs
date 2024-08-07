@@ -7,14 +7,16 @@ public class Player2 : MonoBehaviour
     public Rigidbody2D playerRB;
     public float speed = 2;
     private float horizontal;
-    public int direction;
+    public int direction = -1;
     public GameObject bateria;
     public bool hasBattery = false;
     public float speedBattery = 5;
     public Transform Esquerda, Direita;
     public bool GroundCheck;
     Collider2D footCollision;
-    Transform foot;
+    public Transform foot;
+    public int jumpStrength = 15;
+    public Animator animator;
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
@@ -23,6 +25,10 @@ public class Player2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("Desligar", hasBattery);
+        animator.SetFloat("Speed", horizontal);
+        footCollision = Physics2D.OverlapCircle(foot.position, 0.05f);
+        GroundCheck = footCollision;
         if (horizontal != 0)
         {
             direction = (int)horizontal;
@@ -31,7 +37,11 @@ public class Player2 : MonoBehaviour
         if (CompareTag("Player2") && hasBattery == true)
         {
             horizontal = Input.GetAxisRaw("Horizontal");
-            playerRB.velocity = new Vector2(speed * horizontal, 0);
+            playerRB.velocity = new Vector2(speed * horizontal, playerRB.velocity.y);
+        }
+        if (Input.GetButtonDown("Vertical") && GroundCheck && hasBattery == true)
+        {
+            playerRB.AddForce(new Vector2(0, jumpStrength * 100));
         }
         if (Input.GetKeyDown(KeyCode.RightControl) && hasBattery == true)
         {
