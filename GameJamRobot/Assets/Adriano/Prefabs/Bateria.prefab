@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9215588869474215697}
   - component: {fileID: 9215588869474215710}
   - component: {fileID: 9215588869474215696}
+  - component: {fileID: 3045407034922036202}
   - component: {fileID: 9215588869474215698}
-  - component: {fileID: 5035241975698393041}
   m_Layer: 0
   m_Name: Bateria
   m_TagString: Bateria
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 9215588869474215711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.4, y: -2.295755, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.37244, y: 0.37244, z: 0.37244}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,6 +108,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3045407034922036202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9215588869474215711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de205d91e4a1ed04fb50197ad4a3f6ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &9215588869474215698
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,15 +146,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5035241975698393041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9215588869474215711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3ca76d123ea31f43852d7ca5627c46c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

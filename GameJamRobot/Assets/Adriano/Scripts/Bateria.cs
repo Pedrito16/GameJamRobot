@@ -5,22 +5,20 @@ using UnityEngine;
 
 public class Bateria : MonoBehaviour
 {
-    public GameObject bateriaprefab;
-    public int bateriaqt = 1;
-    public GameObject spawn;
-    public float force;
-    // Start is called before the first frame update
-    void Start()
+    [Header("Scripts de referençia para recuperar bateria")]
+    public Player player;
+    public Player2 player2;
+    public HumanPlayer player3;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T) && bateriaqt == 1)
+        if (collision.CompareTag("ParedeNormal"))
         {
-            Instantiate(bateriaprefab, spawn.transform.position, spawn.transform.rotation);
+            Destroy(gameObject);
+
         }
+    }
+    private void OnBecameInvisible()
+    {
+       Destroy(gameObject);
     }
 }

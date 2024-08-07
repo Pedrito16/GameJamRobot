@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,23 +7,24 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Rigidbody2D playerRB;
-    public Rigidbody2D playerRB2;
-    public float speed;
-    private float direction;
-    public bool currentplayer = true;
-    public bool playerBateria = true;
-    public GameObject bateria;
     
+    public float speed;
+    private float horizontal;
+    public int direction;
+    public GameObject bateria;
+    public bool hasBattery;
+    public float speedBattery = 5;
+    public Transform Esquerda, Direita;
+    public bool GroundCheck;
+    Collider2D footCollision;
+    public Transform foot;
+    public float jumpStrength = 3;
     // Start is called before the first frame update
     void Start()
     {
         if(CompareTag("Player"))
         {
             playerRB = GetComponent<Rigidbody2D>();
-        }
-        if(CompareTag("Player2"))
-        {
-            playerRB2 = GetComponent<Rigidbody2D>();
         }
         
     }
@@ -31,68 +33,47 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentplayer == true) 
+        footCollision = Physics2D.OverlapCircle(foot.position, 0.05f);
+        GroundCheck = footCollision;
+        if(Input.GetButtonDown("Vertical")&& GroundCheck)
         {
-            playerone();
-        }
-        else if (currentplayer == false) { playertwo(); }
-
-        changePlayer();
-        float timer = Time.deltaTime;
-       if(timer > 1)
-        {
+            playerRB.AddForce(new Vector2(0, jumpStrength * 100));
 
         }
-    }
-    
-    
-        
-
-        /*bateriaClone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        bateriaClone.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,0));*/
-    
-    void playerone()
-    {
-        if(CompareTag("Player") && playerBateria == true)
+        if(horizontal != 0)
         {
-            direction = Input.GetAxisRaw("Horizontal");
-            playerRB.velocity = new Vector2(speed * direction, 0);
+            direction = (int)horizontal;
         }
-    }
-    
-    void playertwo()
-    {
-        if(CompareTag("Player2") && playerBateria == true)
+        if (CompareTag("Player") && hasBattery == true)
         {
-            direction = Input.GetAxisRaw("Horizontal");
-            playerRB2.velocity = new Vector2(speed * direction, 0);
+            horizontal = Input.GetAxisRaw("Horizontal");
+            playerRB.velocity = new Vector2(speed * horizontal, playerRB.velocity.y);
+            
         }
-    }
-
-    public void changePlayer()
-    {
-        /*float timer =+ Time.deltaTime;
-        if (timer > 1)
+        if (Input.GetKeyDown(KeyCode.RightControl) && hasBattery == true)
         {
-            bateriaClone
-            timer = 0;
-        }*/
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            playerBateria = false;
-            if (currentplayer)
+            if (direction == -1)
+            { //trocar rotação quando exportar sprite
+                GameObject bateriaClone = Instantiate(bateria, Esquerda.position, transform.rotation);
+                bateriaClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speedBattery * direction, 0);
+            } else if(direction == 1)
             {
-                currentplayer = false;
+                GameObject bateriaClone = Instantiate(bateria, Direita.position, transform.rotation);
+                bateriaClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speedBattery * direction, 0);
             }
-            else { currentplayer = true; }
-
-            
-            GameObject bateriaClone = Instantiate(bateria, transform.position, transform.rotation);
-            
-
+            hasBattery = false;
         }
-
     }
-    
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bateria"))
+        {
+            Destroy(collision.gameObject);
+            hasBattery = true;
+        }
+    }
+    /*bateriaClone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    bateriaClone.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,0));*/
 }
