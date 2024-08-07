@@ -59,7 +59,7 @@ public class CamSeguirPlayer : MonoBehaviour
             pointCam2.SetActive(false); //robo2
             pointCam3.SetActive(true); //humano
             Vector3 posicaoPlayer = player3Transform.position + offset;
-            Vector3 targetPosition = new Vector3(posicaoPlayer.x, posicaoPlayer.y, pointCam3.transform.position.z);
+            Vector3 targetPosition = new Vector3(posicaoPlayer.x, posicaoPlayer.y + 3, pointCam3.transform.position.z);
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, speed);
             
         }
