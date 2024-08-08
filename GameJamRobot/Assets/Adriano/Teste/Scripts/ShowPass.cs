@@ -10,10 +10,8 @@ public class ShowPass : MonoBehaviour
     [SerializeField]
     public GameObject number;
     public GameObject numberBG;
-    public GameObject notshowable;
-    public GameObject notshowable2;
-    public GameObject dark;
     public CinemachineVirtualCamera humanCam;
+    public Camera Robo1;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +30,14 @@ public class ShowPass : MonoBehaviour
         {
             numberBG.SetActive(true);
             number.SetActive(true);
-            dark.SetActive(true);
-            notshowable.SetActive(false);
-            notshowable2.SetActive(false);
             humanCam.m_Lens.OrthographicSize = 40;
+        }
+
+        if(collision.CompareTag("Player2") && collision.CompareTag("Player"))
+        {
+            numberBG.SetActive(true);
+            number.SetActive(true);
+            Robo1.orthographicSize = 40;
         }
         
     }
@@ -43,9 +45,6 @@ public class ShowPass : MonoBehaviour
     {
         numberBG.SetActive(false);
         number.SetActive(false);
-        dark.SetActive(false);
-        notshowable.SetActive(true);
-        notshowable2.SetActive(true);
         humanCam.m_Lens.OrthographicSize = 13.5f;
     }
 }

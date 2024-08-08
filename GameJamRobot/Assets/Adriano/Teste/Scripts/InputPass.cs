@@ -11,7 +11,7 @@ public class InputPass : MonoBehaviour
     public Text messageText;
 
     // Defina a senha correta aqui
-    private string correctPassword = "965"; // Alterar conforme necessário
+    private string correctPassword = "638"; // Alterar conforme necessário
 
     void Start()
     {
