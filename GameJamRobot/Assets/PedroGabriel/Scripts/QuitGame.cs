@@ -19,10 +19,13 @@ public class QuitGame : MonoBehaviour
        
     }
     
-    
-    public void CarregarCena()
+    public void Jogar()
     {
         SceneManager.LoadScene("Test");
+    }
+    public void CarregarCena()
+    {
+        SceneManager.LoadScene("InicioContext");
     }
     public void SairJogo()
     {
