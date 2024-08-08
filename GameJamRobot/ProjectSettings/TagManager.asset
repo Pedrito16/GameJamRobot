@@ -11,6 +11,8 @@ TagManager:
   - Show
   - Parador1
   - ParedeNormal
+  - Key
+  - Caixa
   layers:
   - Default
   - TransparentFX

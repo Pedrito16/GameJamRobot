@@ -157,6 +157,7 @@ MonoBehaviour:
   direction: -1
   bateria: {fileID: 9215588869474215711, guid: 570d3517ec21264449bc33536902b8fc, type: 3}
   hasBattery: 0
+  hasKey: 0
   speedBattery: 8
   Esquerda: {fileID: 4308025790523656563}
   Direita: {fileID: 4308025791113100598}

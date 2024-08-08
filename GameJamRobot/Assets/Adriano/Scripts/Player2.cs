@@ -10,6 +10,7 @@ public class Player2 : MonoBehaviour
     public int direction = -1;
     public GameObject bateria;
     public bool hasBattery = false;
+    public bool hasKey = false;
     public float speedBattery = 7;
     public Transform Esquerda, Direita;
     public bool GroundCheck;
@@ -18,6 +19,7 @@ public class Player2 : MonoBehaviour
     public int jumpStrength = 15;
     public Animator animator;
     public GameObject batteryFrame;
+    
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
@@ -35,6 +37,7 @@ public class Player2 : MonoBehaviour
             direction = (int)horizontal;
         }
         batteryFrame.SetActive(hasBattery);
+        
         if (CompareTag("Player2") && hasBattery == true)
         {
             horizontal = Input.GetAxisRaw("Horizontal");
@@ -58,6 +61,7 @@ public class Player2 : MonoBehaviour
             }
 
             hasBattery = false;
+            
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,6 +70,12 @@ public class Player2 : MonoBehaviour
         {
             Destroy(collision.gameObject);
             hasBattery = true;
+        }
+
+        if (collision.CompareTag("Key"))
+        {
+            Destroy(collision.gameObject);
+            hasKey = true;
         }
     }
 }

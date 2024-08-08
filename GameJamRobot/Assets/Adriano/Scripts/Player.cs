@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public int direction = -1;
     public GameObject bateria;
     public bool hasBattery;
+    public bool hasKey = false;
     public float speedBattery = 7;
     public Transform Esquerda, Direita;
     public bool GroundCheck;
@@ -83,6 +84,12 @@ public class Player : MonoBehaviour
         {
             Destroy(collision.gameObject);
             hasBattery = true;
+        }
+        if (collision.CompareTag("Key"))
+        {
+
+            Destroy(collision.gameObject);
+            hasKey = true;
         }
     }
     /*bateriaClone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

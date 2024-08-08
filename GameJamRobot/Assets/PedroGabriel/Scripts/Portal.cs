@@ -10,9 +10,14 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Human"))
+        HumanPlayer player = GetComponent<HumanPlayer>();
+        if (collision.CompareTag("Human") && collision.GetComponent<HumanPlayer>().hasKey == true)
         {
             Human.position = new Vector2(Human.position.x, Human.position.y - 8);
+            player1.position = teleportLocation1.position;
+            player2.position = teleportLocation2.position;
+            collision.GetComponent<HumanPlayer>().hasKey = false;
+
         }
     }
 }

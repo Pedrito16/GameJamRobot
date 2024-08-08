@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
+using Cinemachine;
 
 public class ShowPass : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class ShowPass : MonoBehaviour
     public GameObject notshowable;
     public GameObject notshowable2;
     public GameObject dark;
-    public Camera camPlayerD;
+    public CinemachineVirtualCamera humanCam;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,14 +28,14 @@ public class ShowPass : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if(collision.CompareTag("Human"))
         {
             numberBG.SetActive(true);
             number.SetActive(true);
             dark.SetActive(true);
             notshowable.SetActive(false);
             notshowable2.SetActive(false);
-            camPlayerD.orthographicSize = 20;
+            humanCam.m_Lens.OrthographicSize = 40;
         }
         
     }
@@ -45,6 +46,6 @@ public class ShowPass : MonoBehaviour
         dark.SetActive(false);
         notshowable.SetActive(true);
         notshowable2.SetActive(true);
-        camPlayerD.orthographicSize = 5;
+        humanCam.m_Lens.OrthographicSize = 13.5f;
     }
 }

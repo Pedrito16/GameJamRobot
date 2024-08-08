@@ -87,5 +87,11 @@ public class HumanPlayer : MonoBehaviour
             Destroy(collision.gameObject);
             hasBattery = true;
         }
+        if (collision.CompareTag("Key"))
+        {
+
+            Destroy(collision.gameObject);
+            hasKey = true;
+        }
     }
 }
