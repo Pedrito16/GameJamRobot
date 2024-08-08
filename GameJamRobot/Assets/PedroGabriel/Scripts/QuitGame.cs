@@ -29,4 +29,8 @@ public class QuitGame : MonoBehaviour
         Application.Quit();
 
     }
+    public void Options()
+    {
+
+    }
 }
