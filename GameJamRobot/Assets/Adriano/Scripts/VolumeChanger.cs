@@ -19,8 +19,7 @@ public class VolumeChanger : MonoBehaviour
     void Update()
     {
         AudioListener.volume = volgeral;
-        textvolume.text = AudioListener.volume.ToString();
-        textvolume.text = $"{AudioListener.volume: 5}";
+        textvolume.text = volgeral.ToString();
     }
 
     public void somMudar()
