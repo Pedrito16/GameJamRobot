@@ -9,7 +9,6 @@ public class InputPass : MonoBehaviour
     public GameObject doorPassWord;
     public InputField passwordInputField;
     public Text messageText;
-    public Button submitButton;
 
     // Defina a senha correta aqui
     private string correctPassword = "965"; // Alterar conforme necessário
@@ -17,7 +16,6 @@ public class InputPass : MonoBehaviour
     void Start()
     {
         // Adiciona um listener ao botão de envio
-        submitButton.onClick.AddListener(OnSubmit);
 
         // Inicializa a mensagem de texto
         messageText.text = "";
