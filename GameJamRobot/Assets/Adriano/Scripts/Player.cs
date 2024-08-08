@@ -13,13 +13,14 @@ public class Player : MonoBehaviour
     public int direction = -1;
     public GameObject bateria;
     public bool hasBattery;
-    public float speedBattery = 5;
+    public float speedBattery = 7;
     public Transform Esquerda, Direita;
     public bool GroundCheck;
     Collider2D footCollision;
     public Transform foot;
     public float jumpStrength = 3;
     public Animator animator;
+    public GameObject batteryFrame;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +50,7 @@ public class Player : MonoBehaviour
             playerRB.velocity = new Vector2(speed * horizontal, playerRB.velocity.y);
             
         }
-        
+        batteryFrame.SetActive(hasBattery);
         if(Input.GetButtonDown("Vertical") && GroundCheck && hasBattery == true)
         {
             playerRB.AddForce(new Vector2(0, jumpStrength * 100));

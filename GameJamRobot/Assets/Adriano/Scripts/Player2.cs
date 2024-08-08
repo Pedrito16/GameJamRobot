@@ -10,13 +10,14 @@ public class Player2 : MonoBehaviour
     public int direction = -1;
     public GameObject bateria;
     public bool hasBattery = false;
-    public float speedBattery = 5;
+    public float speedBattery = 7;
     public Transform Esquerda, Direita;
     public bool GroundCheck;
     Collider2D footCollision;
     public Transform foot;
     public int jumpStrength = 15;
     public Animator animator;
+    public GameObject batteryFrame;
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
@@ -33,7 +34,7 @@ public class Player2 : MonoBehaviour
         {
             direction = (int)horizontal;
         }
-        
+        batteryFrame.SetActive(hasBattery);
         if (CompareTag("Player2") && hasBattery == true)
         {
             horizontal = Input.GetAxisRaw("Horizontal");

@@ -11,7 +11,7 @@ public class HumanPlayer : MonoBehaviour
     public bool hasBattery;
     public GameObject bateria;
     public Transform Esquerda, Direita;
-    public int speedBattery = 4;
+    public int speedBattery = 7;
     public bool GroundCheck;
     Collider2D footCollision;
     Vector3 esquerda, direita, camTransformInitial;
@@ -19,6 +19,7 @@ public class HumanPlayer : MonoBehaviour
     public float jumpStrength = 3;
     public Transform camTransform;
     public bool hasKey = false;
+    public GameObject batteryFrame;
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
@@ -44,9 +45,9 @@ public class HumanPlayer : MonoBehaviour
 
         Esquerda.position = transform.position + esquerda;
         Direita.position = transform.position + direita;
-        
-        
 
+        batteryFrame.SetActive(hasBattery);
+        
         footCollision = Physics2D.OverlapCircle(foot.position, 0.05f);
         GroundCheck = footCollision;
         if(horizontal != 0)

@@ -10,6 +10,7 @@ TagManager:
   - notShow
   - Show
   - Parador1
+  - ParedeNormal
   layers:
   - Default
   - TransparentFX
@@ -44,9 +45,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 1612246163
+    locked: 0
+  - name: Decoratios & props
+    uniqueID: 823832435
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
