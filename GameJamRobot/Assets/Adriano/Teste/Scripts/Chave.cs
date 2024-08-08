@@ -27,11 +27,11 @@ public class Chave : MonoBehaviour
             Destroy(key);
             chave = true;
             chavecontador = chavecontador + 1;
-            if(chavecontador == 1)
+            if(chavecontador == 1 && chave == true)
             {
                 Instantiate(key, new Vector3(-34, -30.64f, 0), Quaternion.identity);
             }
-            else if (chavecontador == 2)
+            else if (chavecontador == 2 && chave == true)
             {
                 Instantiate(key, new Vector3(-34, -55, 0), Quaternion.identity);
             }

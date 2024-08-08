@@ -8,6 +8,7 @@ public class ShowPass : MonoBehaviour
 {
     [SerializeField]
     public GameObject number;
+    public GameObject numberBG;
     public GameObject notshowable;
     public GameObject notshowable2;
     public GameObject dark;
@@ -28,6 +29,7 @@ public class ShowPass : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            numberBG.SetActive(true);
             number.SetActive(true);
             dark.SetActive(true);
             notshowable.SetActive(false);
@@ -38,6 +40,7 @@ public class ShowPass : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        numberBG.SetActive(false);
         number.SetActive(false);
         dark.SetActive(false);
         notshowable.SetActive(true);

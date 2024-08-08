@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Teletransporte : MonoBehaviour
 {
@@ -21,7 +22,14 @@ public class Teletransporte : MonoBehaviour
     {
         if(Chave.chave == true)
         {
-            player.position = new Vector2(player.position.x -99, player.position.y);
+            player.position = new Vector2(player.position.x, player.position.y - 25);
+            Chave.chave = false;
+        }
+
+        
+        else if(Chave.chave == true && Chave.chavecontador == 3)
+        {
+            SceneManager.LoadScene("");
         }
     }
 }
