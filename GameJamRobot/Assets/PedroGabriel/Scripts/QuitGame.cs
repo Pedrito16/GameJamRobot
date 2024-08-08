@@ -29,8 +29,8 @@ public class QuitGame : MonoBehaviour
         Application.Quit();
 
     }
-    public void Options()
+    public void irMenu()
     {
-
+        SceneManager.LoadScene("MenuScene");
     }
 }
