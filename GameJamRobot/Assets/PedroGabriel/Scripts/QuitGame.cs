@@ -22,7 +22,7 @@ public class QuitGame : MonoBehaviour
     
     public void CarregarCena()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Test");
     }
     public void SairJogo()
     {
